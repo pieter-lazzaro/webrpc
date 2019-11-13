@@ -1,0 +1,47 @@
+{{define "client"}}
+
+{{- if .Services}}
+//
+// Client
+//
+
+{{- range .Services}}
+@Injectable({
+  providedIn: 'root'
+})
+export class {{.Name}} {
+
+  private path = '/rpc/{{.Name}}/'
+
+  constructor(private rpc: RpcService) { }
+
+  private url(name: string): string {
+    return this.path + name
+  }
+
+  {{range .Methods}}
+  {{.Name | methodName}} = ({{. | methodInputs}}): {{. | methodOutputs}} => {
+    return this.rpc.call<{{. | methodArgumentOutputInterfaceName}},{{. | methodArgumentInputInterfaceName}}>(
+      this.url('{{.Name}}'),
+      {{- if .Inputs | len}}
+      args,
+      {{- else}}
+      {},
+      {{end}}
+      options,
+    ).pipe(
+      map((_data) => {
+        return {
+        {{- $outputsCount := .Outputs|len -}}
+        {{- range $i, $output := .Outputs}}
+          {{$output | newOutputArgResponse}}{{listComma $i $outputsCount}}
+        {{- end}}
+        };
+      }),
+    );
+  }
+  {{end}}
+}
+{{end -}}
+{{end -}}
+{{end}}

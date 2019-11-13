@@ -12,6 +12,7 @@ import (
 	_ "github.com/webrpc/webrpc/gen/golang"
 	_ "github.com/webrpc/webrpc/gen/javascript"
 	_ "github.com/webrpc/webrpc/gen/typescript"
+	_ "github.com/webrpc/webrpc/gen/typescript-angular"
 )
 
 var flags = flag.NewFlagSet("webrpc-gen", flag.ExitOnError)

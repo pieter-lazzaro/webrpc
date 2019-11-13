@@ -1,0 +1,86 @@
+{{define "client_helpers"}}
+
+const defaultRequestOptions = () => ({
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  observe: 'body' as 'body',
+  responseType: 'json' as 'json',
+  withCredentials: true,
+});
+
+interface RequestOptions {
+  headers?: HttpHeaders | { [header: string]: string | string[]; };
+  params?: HttpParams | { [param: string]: string | string[]; };
+  observe?: 'body';
+  responseType?: 'json';
+  withCredentials?: boolean;
+}
+
+export interface WebRPCOptions {
+  headers?: object;
+}
+
+export interface WebRPCError extends Error {
+  code: string;
+  msg: string;
+	status: number;
+}
+
+const buildOptions = (rpcOptions: WebRPCOptions = {}): RequestOptions => {
+  let options = defaultRequestOptions();
+
+  if (rpcOptions.headers) {
+    options.headers = {
+      ...options.headers,
+      ...rpcOptions.headers,
+    };
+  }
+
+  return options;
+};
+
+const handleError = (error: WebRPCError) => {
+  return throwError(error);
+}
+
+
+export const WEB_RPC_URL = new InjectionToken<string>('webrpc-url');
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RpcService {
+
+  constructor(private http: HttpClient, @Inject(WEB_RPC_URL) private url: string) { }
+
+  call<ResponseType, Arguments>(path: string, args: Arguments, rpcOptions?: WebRPCOptions ) {
+    const options = buildOptions(rpcOptions);
+    return this.http.post<ResponseType>(this.url + '/' + path, args, options).pipe(
+      map( (response) => {
+        return response;
+      }),
+      catchError(handleError),
+    );
+  }
+}
+
+@NgModule({
+  imports: [
+    HttpClientModule,
+  ],
+})
+export class WebRPCModule {
+
+  static forRoot(url: string) {
+    return {
+      ngModule: WebRPCModule,
+      providers: [
+        {provide: WEB_RPC_URL, useValue: url},
+        RpcService,
+      ]
+    }
+  }
+ }
+
+{{end}}
