@@ -47,9 +47,7 @@ const handleError = (error: WebRPCError) => {
 
 export const WEB_RPC_URL = new InjectionToken<string>('webrpc-url');
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class RpcService {
 
   constructor(private http: HttpClient, @Inject(WEB_RPC_URL) private url: string) { }
