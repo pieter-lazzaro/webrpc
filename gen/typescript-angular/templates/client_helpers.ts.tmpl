@@ -54,7 +54,7 @@ export class RpcService {
 
   call<ResponseType, Arguments>(path: string, args: Arguments, rpcOptions?: WebRPCOptions ) {
     const options = buildOptions(rpcOptions);
-    return this.http.post<ResponseType>(this.url + '/' + path, args, options).pipe(
+    return this.http.post<ResponseType>(this.url + path, args, options).pipe(
       map( (response) => {
         return response;
       }),
@@ -62,23 +62,5 @@ export class RpcService {
     );
   }
 }
-
-@NgModule({
-  imports: [
-    HttpClientModule,
-  ],
-})
-export class WebRPCModule {
-
-  static forRoot(url: string) {
-    return {
-      ngModule: WebRPCModule,
-      providers: [
-        {provide: WEB_RPC_URL, useValue: url},
-        RpcService,
-      ]
-    }
-  }
- }
 
 {{end}}

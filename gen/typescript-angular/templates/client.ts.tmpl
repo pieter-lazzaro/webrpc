@@ -6,9 +6,7 @@
 //
 
 {{- range .Services}}
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class {{.Name}} {
 
   private path = '/rpc/{{.Name}}/'
@@ -43,5 +41,27 @@ export class {{.Name}} {
   {{end}}
 }
 {{end -}}
+
+@NgModule({
+  imports: [
+    HttpClientModule,
+  ],
+})
+export class WebRPCModule {
+
+  static forRoot(url: string) {
+    return {
+      ngModule: WebRPCModule,
+      providers: [
+        {provide: WEB_RPC_URL, useValue: url},
+        RpcService,
+        {{- range .Services}}
+        {{.Name}},
+        {{end -}}
+      ]
+    }
+  }
+ }
+
 {{end -}}
 {{end}}
