@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/shopspring/decimal"
 	"github.com/webrpc/webrpc/schema"
 )
 
@@ -311,6 +312,101 @@ func hasFieldType(proto *schema.WebRPCSchema) func(fieldType string) (bool, erro
 	}
 }
 
+func structHasValidation(proto *schema.Message) bool {
+	fmt.Println(proto)
+	for _, field := range proto.Fields {
+
+		if fieldHasValidation(field) {
+			return true
+		}
+	}
+
+	return false
+}
+
+func fieldHasValidation(field *schema.MessageField) bool {
+	for i := range field.Meta {
+		for k := range field.Meta[i] {
+			if strings.HasPrefix(k, "validations.") {
+				return true
+			}
+		}
+	}
+
+	return false
+}
+
+type validatorLookupFunc func(value string) (string, error)
+
+var validatorMap = map[string]validatorLookupFunc{
+	"maxLength": func(value string) (string, error) {
+		length, err := strconv.Atoi(value)
+
+		if err != nil {
+			return "", errors.New("invalid value for maxLength validator")
+		}
+
+		return fmt.Sprintf("maxLength(%d)", length), nil
+	},
+	"minLength": func(value string) (string, error) {
+		length, err := strconv.Atoi(value)
+
+		if err != nil {
+			return "", errors.New("invalid value for minLength validator")
+		}
+
+		return fmt.Sprintf("minLength(%d)", length), nil
+	},
+	"max": func(value string) (string, error) {
+		if _, err := decimal.NewFromString(value); err != nil {
+			return "", errors.New("invalid value for max validator")
+		}
+
+		return fmt.Sprintf(`max(decimal.RequireFromString("%s))`, value), nil
+	},
+	"min": func(value string) (string, error) {
+		if _, err := decimal.NewFromString(value); err != nil {
+			return "", errors.New("invalid value for min validator")
+		}
+
+		return fmt.Sprintf(`min(decimal.RequireFromString("%s))`, value), nil
+	},
+	"required": func(value string) (string, error) {
+		return `validation.Required`, nil
+	},
+}
+
+func validators(field *schema.MessageField) (string, error) {
+
+	vs := []string{}
+
+	for i := range field.Meta {
+		for k, v := range field.Meta[i] {
+			if strings.HasPrefix(k, "validations.") {
+				name := strings.TrimPrefix(k, "validations.")
+
+				if validator, found := validatorMap[name]; found {
+					vv, ok := v.(string)
+
+					if !ok {
+						return "", fmt.Errorf("values must be string, got: %T", v)
+					}
+					vf, err := validator(vv)
+
+					if err != nil {
+						return "", err
+					}
+					vs = append(vs, vf)
+				} else {
+					return "", fmt.Errorf("unknown validation: %s", name)
+				}
+			}
+		}
+	}
+
+	return strings.Join(vs, ",") + ",", nil
+}
+
 func templateFuncMap(proto *schema.WebRPCSchema) map[string]interface{} {
 	return map[string]interface{}{
 		"serviceMethodName":     serviceMethodName,
@@ -337,5 +433,8 @@ func templateFuncMap(proto *schema.WebRPCSchema) map[string]interface{} {
 		"isEnum":                isEnum,
 		"exportedField":         exportedField,
 		"downcaseName":          downcaseName,
+		"structHasValidation":   structHasValidation,
+		"fieldHasValidation":    fieldHasValidation,
+		"validators":            validators,
 	}
 }

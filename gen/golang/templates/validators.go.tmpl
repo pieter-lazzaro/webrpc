@@ -1,0 +1,97 @@
+{{define "validators"}}
+
+//
+// Validators
+//
+
+
+func maxLength(length int) validation.Rule {
+	return validation.Length(0, length)
+}
+
+
+func minLength(length int) validation.Rule {
+	return validation.Length(length, 0)
+}
+
+
+func min(m decimal.Decimal) validation.Rule {
+	return validation.By(func(value interface{}) error {
+
+    switch v := value.(type) {
+    case decimal.Decimal:
+      if v.LessThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case int:
+      d := decimal.NewFromInt(int64(v))
+      if d.LessThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case int32:
+      d := decimal.NewFromInt32(v)
+      if d.LessThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case int64:
+      d := decimal.NewFromInt(v)
+      if d.LessThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case float32:
+      d := decimal.NewFromFloat32(v)
+      if d.LessThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case float64:
+      d := decimal.NewFromFloat(v)
+      if d.LessThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    }
+
+		return nil
+	})
+}
+
+
+func max(m decimal.Decimal) validation.RuleFunc {
+	return validation.By(func(value interface{}) error {
+
+    switch v := value.(type) {
+    case decimal.Decimal:
+      if v.GreaterThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case int:
+      d := decimal.NewFromInt(int64(v))
+      if d.GreaterThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case int32:
+      d := decimal.NewFromInt32(v)
+      if d.GreaterThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case int64:
+      d := decimal.NewFromInt(v)
+      if d.GreaterThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case float32:
+      d := decimal.NewFromFloat32(v)
+      if d.GreaterThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    case float64:
+      d := decimal.NewFromFloat(v)
+      if d.GreaterThanOrEqual(m) {
+        return fmt.Errorf("value must be greater than %s", m.String())
+      }
+    }
+
+		return nil
+	})
+}
+
+{{end}}

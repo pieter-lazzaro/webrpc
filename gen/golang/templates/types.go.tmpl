@@ -56,6 +56,19 @@
         {{. | exportedField}} {{. | fieldOptional}}{{. | fieldTypeDef}} {{. | fieldTags}}
       {{- end}}
     }
+
+    {{ if . | structHasValidation }}
+    func (t {{.Name}}) Validate() error {
+        return validation.ValidateStruct(
+        &t,
+        {{- range .Fields}}
+          {{- if . | fieldHasValidation }}
+            validation.Field(&t.{{. | exportedField}}, {{ . | validators }}),
+          {{ end }}
+        {{- end}}
+      )
+    }
+    {{end}}
   {{end}}
 {{end}}
 {{end}}

@@ -67,7 +67,8 @@ const input = `
           "optional": false,
           "meta": [
             { "json": "USERNAME" },
-            { "go.tag.db": "username" }
+            { "go.tag.db": "username" },
+            { "validations.maxLength": "20" }
           ]
         },
         {
@@ -169,7 +170,7 @@ const input = `
 }
 `
 
-func TestGenTypescript(t *testing.T) {
+func TestGenGolang(t *testing.T) {
 	g := &generator{}
 
 	s, err := schema.ParseSchemaJSON([]byte(input))

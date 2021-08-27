@@ -17,6 +17,8 @@ import (
   "errors"
   "io"
   "net/url"
+  validation "github.com/go-ozzo/ozzo-validation"
+  "github.com/shopspring/decimal"
 )
 
 // WebRPC description and code-gen version
@@ -45,5 +47,7 @@ func WebRPCSchemaHash() string {
 {{end}}
 
 {{template "helpers" .}}
+
+{{template "validators" .}}
 
 {{- end}}
