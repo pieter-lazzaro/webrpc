@@ -313,7 +313,6 @@ func hasFieldType(proto *schema.WebRPCSchema) func(fieldType string) (bool, erro
 }
 
 func structHasValidation(proto *schema.Message) bool {
-	fmt.Println(proto)
 	for _, field := range proto.Fields {
 
 		if fieldHasValidation(field) {

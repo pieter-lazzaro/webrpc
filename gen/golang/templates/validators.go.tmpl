@@ -55,7 +55,7 @@ func min(m decimal.Decimal) validation.Rule {
 }
 
 
-func max(m decimal.Decimal) validation.RuleFunc {
+func max(m decimal.Decimal) validation.Rule {
 	return validation.By(func(value interface{}) error {
 
     switch v := value.(type) {
