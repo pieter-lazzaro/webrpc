@@ -11,9 +11,17 @@
 export enum {{$enumName}} {
 {{- range $i, $field := .Fields}}
   {{- if $i}},{{end}}
-  {{$field.Name}} = '{{$field.Name}}'
+  {{$field.Name}} = {{$field.Value}}
 {{- end}}
 }
+
+export enum {{$enumName}}Labels {
+{{- range $i, $field := .Fields}}
+  {{- if $i}},{{end}}
+  {{$field.Name}} = "{{$field.Name}}"
+{{- end}}
+}
+
 {{end -}}
 
 {{- if .Type | isStruct  }}
