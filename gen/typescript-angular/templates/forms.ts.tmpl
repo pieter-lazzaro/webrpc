@@ -1,0 +1,45 @@
+{{define "forms"}}
+//
+// Forms
+//
+
+{{- if .Messages -}}
+{{range .Messages -}}
+
+{{- if .Type | isStruct  }}
+export function {{.Name | formGeneratorName}}() {
+  return new FormGroup({
+  {{- range .Fields}}
+    {{if . | exportableField -}}{{. | exportedJSONField}}: new FormControl('', [{{if not .Optional}}Validators.required{{end}}]),{{- end -}}
+  {{- end}}
+  });
+}
+{{end -}}
+{{end -}}
+{{end -}}
+
+{{if .Services}}
+{{- range .Services}}
+export interface {{.Name | serviceInterfaceName}} {
+{{- range .Methods}}
+  {{.Name | methodName}}({{. | methodInputs}}): {{. | methodOutputs}}
+{{- end}}
+}
+
+{{range .Methods -}}
+export interface {{. | methodArgumentInputInterfaceName}} {
+{{- range .Inputs}}
+  {{.Name}}{{if .Optional}}?{{end}}: {{.Type | fieldType}}
+{{- end}}
+}
+
+export interface {{. | methodArgumentOutputInterfaceName}} {
+{{- range .Outputs}}
+  {{.Name}}{{if .Optional}}?{{end}}: {{.Type | fieldType}}
+{{- end}}  
+}
+{{end}}
+
+{{- end}}
+{{end -}}
+{{end}}

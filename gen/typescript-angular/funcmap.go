@@ -224,6 +224,11 @@ func serverServiceName(in schema.VarName) (string, error) {
 	return strings.ToLower(s[0:1]) + s[1:] + "Server", nil
 }
 
+func formGeneratorName(in schema.VarName) (string, error) {
+	s := string(in)
+	return s + "Form", nil
+}
+
 func methodArgType(in *schema.MethodArgument) string {
 	z, err := fieldType(in.Type)
 
@@ -268,4 +273,5 @@ var templateFuncMap = map[string]interface{}{
 	"serverServiceName":                 serverServiceName,
 	"methodArgType":                     methodArgType,
 	"jsFieldType":                       jsFieldType,
+	"formGeneratorName":                 formGeneratorName,
 }

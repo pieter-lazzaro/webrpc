@@ -24,6 +24,7 @@ export const WebRPCSchemaHash = "{{.SchemaHash}}"
 {{- if .TargetOpts.Client}}
   {{template "client_helpers" .}}
   {{template "client" .}}
+  {{template "forms" .}}
 {{- end}}
 
 {{- end}}

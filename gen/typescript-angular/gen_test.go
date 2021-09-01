@@ -165,9 +165,9 @@ func TestGenTypescript(t *testing.T) {
 
 	g := &generator{}
 
-	o, err := g.Gen(s, gen.TargetOptions{})
+	o, err := g.Gen(s, gen.TargetOptions{Client: true})
 	assert.NoError(t, err)
 	_ = o
 
-	// t.Logf("%s", o)
+	t.Logf("%s", o)
 }
