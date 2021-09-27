@@ -15,12 +15,12 @@ export enum {{$enumName}} {
 {{- end}}
 }
 
-export enum {{$enumName}}Labels {
-{{- range $i, $field := .Fields}}
-  {{- if $i}},{{end}}
-  {{$field.Name}} = "{{$field.Name}}"
-{{- end}}
-}
+export const {{$enumName}}Select = Object.values({{$enumName}})
+    .filter( key => typeof key === 'number')
+    .reduce( (labels, key) => {
+      labels[key] = {{$enumName}}[key];
+      return labels;
+    }, {});
 
 {{end -}}
 
