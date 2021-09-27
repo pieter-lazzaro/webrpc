@@ -33,6 +33,31 @@
       return {{$enumName}}_name[{{$enumType}}(x)]
     }
 
+    func (x {{$enumName}}) MarshalJSON() ([]byte, error) {
+      []byte(fmt.Sprint(int64(x))), nil
+    }
+
+    func (x *{{$enumName}}) UnmarshalJSON(b []byte) error {
+      var j string
+      err := json.Unmarshal(b, &j)
+      if err != nil {
+        return err
+      }
+
+      k, err := strconv.ParseInt(j, 10, 64)
+
+      if err != nil {
+        return err
+      }
+
+      if {{$enumName}}_name[k] == "" {
+        return errors.New("unkown value for enum: {{$enumName}}")
+      }
+
+      *x = {{$enumName}}(k)
+      return nil
+    }
+
   {{end}}
   {{if .Type | isStruct  }}
     type {{.Name}} struct {
