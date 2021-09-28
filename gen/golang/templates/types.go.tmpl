@@ -38,16 +38,27 @@
     }
 
     func (x *{{$enumName}}) UnmarshalJSON(b []byte) error {
-      var j string
+      var j interface{}
       err := json.Unmarshal(b, &j)
       if err != nil {
         return err
       }
 
-      k, err := strconv.ParseInt(j, 10, 64)
+      var k {{$enumType}}
 
-      if err != nil {
-        return err
+      switch v := j.(type) {
+      case float64:
+        k = {{$enumType}}(v)
+      case string:
+        n, err := strconv.ParseInt(v, 10, 64)
+
+        if err != nil {
+          return err
+        }
+
+        k = {{$enumType}}(n)
+      default:
+        return errors.New("unkown value for enum: {{$enumName}}")
       }
 
       if {{$enumName}}_name[{{$enumType}}(k)] == "" {
