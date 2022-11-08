@@ -12,7 +12,7 @@ type WebRPCServer interface {
 
 {{- range .Services}}
   {{$name := .Name}}
-  {{$serviceName := .Name }}
+  {{$serviceName := .Name | serverServiceName}}
 
   type {{$serviceName}} struct {
     {{.Name}}
@@ -60,7 +60,7 @@ type WebRPCServer interface {
         //trace.WithAttributes(semconv.HTTPServerAttributesFromHTTPRequest({{ $schemaName }}, routeStr, r)...),
         trace.WithSpanKind(trace.SpanKindServer),
         trace.WithAttributes(semconv.RPCSystemKey.String("webrpc")),
-        trace.WithAttributes(semconv.RPCServiceKey.String("{{$serviceName}}")),
+        trace.WithAttributes(semconv.RPCServiceKey.String("{{$name}}")),
         trace.WithAttributes(semconv.RPCMethodKey.String("{{.Name}}")),
       }
 
@@ -165,7 +165,7 @@ func RespondWithError(ctx context.Context, w http.ResponseWriter, err error) {
 
   span.SetStatus(codes.Error, rpcErr.Msg())
 	span.RecordError(rpcErr)
-
+  
 	statusCode := HTTPStatusFromErrorCode(rpcErr.Code())
 
 	w.Header().Set("Content-Type", "application/json")
