@@ -4,13 +4,15 @@
 // Server
 //
 
+{{- $schemaName := .Name }}
+
 type WebRPCServer interface {
   http.Handler
 }
 
 {{- range .Services}}
   {{$name := .Name}}
-  {{$serviceName := .Name | serverServiceName}}
+  {{$serviceName := .Name }}
 
   type {{$serviceName}} struct {
     {{.Name}}
@@ -28,9 +30,10 @@ type WebRPCServer interface {
     ctx = context.WithValue(ctx, HTTPRequestCtxKey, r)
     ctx = context.WithValue(ctx, ServiceNameCtxKey, "{{.Name}}")
 
+
     if r.Method != "POST" {
       err := Errorf(ErrBadRoute, "unsupported method %q (only POST is allowed)", r.Method)
-      RespondWithError(w, err)
+      RespondWithError(ctx, w, err)
       return
     }
 
@@ -42,13 +45,28 @@ type WebRPCServer interface {
     {{- end}}
     default:
       err := Errorf(ErrBadRoute, "no handler for path %q", r.URL.Path)
-      RespondWithError(w, err)
+      RespondWithError(ctx, w, err)
       return
     }
   }
 
   {{range .Methods}}
     func (s *{{$serviceName}}) {{.Name | serviceMethodName}}(ctx context.Context, w http.ResponseWriter, r *http.Request) {
+      spanName := "{{$name}}/{{.Name}}"
+
+      opts := []trace.SpanStartOption{
+        trace.WithAttributes(semconv.NetAttributesFromHTTPRequest("tcp", r)...),
+        trace.WithAttributes(semconv.EndUserAttributesFromHTTPRequest(r)...),
+        //trace.WithAttributes(semconv.HTTPServerAttributesFromHTTPRequest({{ $schemaName }}, routeStr, r)...),
+        trace.WithSpanKind(trace.SpanKindServer),
+        trace.WithAttributes(semconv.RPCSystemKey.String("webrpc")),
+        trace.WithAttributes(semconv.RPCServiceKey.String("{{$serviceName}}")),
+        trace.WithAttributes(semconv.RPCMethodKey.String("{{.Name}}")),
+      }
+
+      ctx, span := otel.Tracer("webrpc").Start(ctx, spanName, opts...)
+      defer span.End()
+      
       header := r.Header.Get("Content-Type")
       i := strings.Index(header, ";")
       if i == -1 {
@@ -60,7 +78,7 @@ type WebRPCServer interface {
         s.{{ .Name | serviceMethodJSONName }}(ctx, w, r)
       default:
         err := Errorf(ErrBadRoute, "unexpected Content-Type: %q", r.Header.Get("Content-Type"))
-        RespondWithError(w, err)
+        RespondWithError(ctx, w, err)
       }
     }
 
@@ -78,7 +96,7 @@ type WebRPCServer interface {
       reqBody, err := ioutil.ReadAll(r.Body)
       if err != nil {
         err = WrapError(ErrInternal, err, "failed to read request data")
-        RespondWithError(w, err)
+        RespondWithError(ctx, w, err)
         return
       }
       defer r.Body.Close()
@@ -86,7 +104,7 @@ type WebRPCServer interface {
       err = json.Unmarshal(reqBody, &reqContent)
       if err != nil {
         err = WrapError(ErrInvalidArgument, err, "failed to unmarshal request data")
-        RespondWithError(w, err)
+        RespondWithError(ctx, w, err)
         return
       }
       {{- end}}
@@ -99,7 +117,7 @@ type WebRPCServer interface {
         defer func() {
           // In case of a panic, serve a 500 error and then panic.
           if rr := recover(); rr != nil {
-            RespondWithError(w, ErrorInternal("internal service panic"))
+            RespondWithError(ctx, w, ErrorInternal("internal service panic"))
             panic(rr)
           }
         }()
@@ -114,7 +132,7 @@ type WebRPCServer interface {
       {{- end}}
 
       if err != nil {
-        RespondWithError(w, err)
+        RespondWithError(ctx, w, err)
         return
       }
 
@@ -122,7 +140,7 @@ type WebRPCServer interface {
       respBody, err := json.Marshal(respContent)
       if err != nil {
         err = WrapError(ErrInternal, err, "failed to marshal json response")
-        RespondWithError(w, err)
+        RespondWithError(ctx, w, err)
         return
       }
       {{- end}}
@@ -137,11 +155,16 @@ type WebRPCServer interface {
   {{end}}
 {{- end}}
 
-func RespondWithError(w http.ResponseWriter, err error) {
+func RespondWithError(ctx context.Context, w http.ResponseWriter, err error) {
+  span := trace.SpanFromContext(ctx)
+
 	rpcErr, ok := err.(Error)
 	if !ok {
 		rpcErr = WrapError(ErrInternal, err, "webrpc error")
 	}
+
+  span.SetStatus(codes.Error, rpcErr.Msg())
+	span.RecordError(rpcErr)
 
 	statusCode := HTTPStatusFromErrorCode(rpcErr.Code())
 
