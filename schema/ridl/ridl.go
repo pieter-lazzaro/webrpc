@@ -151,10 +151,22 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 
 	// pushing types (1st pass)
 	for _, line := range q.root.Structs() {
-		s.Types = append(s.Types, &schema.Type{
-			Kind: schemaTypeKindStruct,
-			Name: line.Name().String(),
-		})
+
+		t := &schema.Type{
+			Kind:      schemaTypeKindStruct,
+			Name:      line.Name().String(),
+			TypeExtra: schema.TypeExtra{},
+		}
+
+		for _, meta := range line.Meta() {
+			key, val := meta.Left().String(), meta.Right().String()
+			t.Meta = append(t.Meta, schema.TypeFieldMeta{
+				key: val,
+			})
+		}
+
+		s.Types = append(s.Types, t)
+
 	}
 
 	// pushing services (1st pass)

@@ -249,6 +249,7 @@ type StructNode struct {
 
 	name   *TokenNode
 	fields []*DefinitionNode
+	meta   []*DefinitionNode
 }
 
 func (mn StructNode) Name() *TokenNode {
@@ -261,6 +262,9 @@ func (mn *StructNode) Type() NodeType {
 
 func (mn *StructNode) Fields() []*DefinitionNode {
 	return mn.fields
+}
+func (mn *StructNode) Meta() []*DefinitionNode {
+	return mn.meta
 }
 
 type ErrorNode struct {
