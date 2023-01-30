@@ -26,11 +26,21 @@ func ParseSchemaFile(path string) (*schema.WebRPCSchema, error) {
 		return schema.ParseSchemaJSON(json)
 
 	case ".ridl":
+		root := "/"
+
+		// Support windows paths
+		if volume := filepath.VolumeName(absolutePath); volume != "" {
+			root = volume + "/"
+		}
+
+		path := filepath.ToSlash(absolutePath[len(root):])
+
 		// Use root FS to allow RIDL file imports from parent directories,
 		// ie. import ../../common.ridl.
-		rootFS := os.DirFS("/")
 
-		r := ridl.NewParser(rootFS, absolutePath[1:])
+		rootFS := os.DirFS(root)
+
+		r := ridl.NewParser(rootFS, path)
 		return r.Parse()
 
 	default:
