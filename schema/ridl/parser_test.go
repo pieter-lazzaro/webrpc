@@ -827,6 +827,28 @@ func TestParserStruct(t *testing.T) {
 			assert.Equal(t, "created_at,omitempty", structFields[3].Meta()[3].Right().String())
 		}
 	}
+
+	{
+		p, err := newStringParser(`
+		struct Notice
+			+comment = abc
+			- msg:string
+		`)
+		assert.NoError(t, err)
+
+		err = p.run()
+		assert.NoError(t, err)
+
+		s := p.root.Structs()[0]
+		structFields := p.root.Structs()[0].Fields()
+
+		if assert.Equal(t, 1, len(structFields)) {
+			assert.Equal(t, "comment", s.Meta()[0].Left().String())
+			assert.Equal(t, "abc", s.Meta()[0].Right().String())
+			assert.Equal(t, "msg", structFields[0].Left().String())
+			assert.Equal(t, "string", structFields[0].Right().String())
+		}
+	}
 }
 
 func TestParserService(t *testing.T) {

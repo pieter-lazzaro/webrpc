@@ -5,6 +5,7 @@
 		SchemaVersion: (string) (len=7) "v0.10.0",
 		Types: ([]*schema.Type) (len=6 cap=8) {
 			(*schema.Type)({
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Kind: (string) (len=4) "enum",
 				Name: (string) (len=6) "Status",
 				Type: (*schema.VarType)({
@@ -48,6 +49,7 @@
 				Comments: ([]string) <nil>
 			}),
 			(*schema.Type)({
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Kind: (string) (len=4) "enum",
 				Name: (string) (len=6) "Access",
 				Type: (*schema.VarType)({
@@ -124,6 +126,7 @@
 				Comments: ([]string) <nil>
 			}),
 			(*schema.Type)({
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Kind: (string) (len=6) "struct",
 				Name: (string) (len=6) "Simple",
 				Type: (*schema.VarType)(<nil>),
@@ -176,6 +179,7 @@
 				}
 			}),
 			(*schema.Type)({
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Kind: (string) (len=6) "struct",
 				Name: (string) (len=4) "User",
 				Type: (*schema.VarType)(<nil>),
@@ -268,6 +272,7 @@
 				}
 			}),
 			(*schema.Type)({
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Kind: (string) (len=6) "struct",
 				Name: (string) (len=7) "Complex",
 				Type: (*schema.VarType)(<nil>),
@@ -530,6 +535,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=4) "User",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=4) "User",
 											Type: (*schema.VarType)(<nil>),
@@ -663,6 +669,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=4) "User",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=4) "User",
 											Type: (*schema.VarType)(<nil>),
@@ -780,6 +787,7 @@
 							Struct: (*schema.VarStructType)({
 								Name: (string) (len=4) "User",
 								Type: (*schema.Type)({
+									Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 									Kind: (string) (len=6) "struct",
 									Name: (string) (len=4) "User",
 									Type: (*schema.VarType)(<nil>),
@@ -894,6 +902,7 @@
 							Enum: (*schema.VarEnumType)({
 								Name: (string) (len=6) "Status",
 								Type: (*schema.Type)({
+									Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 									Kind: (string) (len=4) "enum",
 									Name: (string) (len=6) "Status",
 									Type: (*schema.VarType)({
@@ -954,6 +963,7 @@
 				}
 			}),
 			(*schema.Type)({
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Kind: (string) (len=6) "struct",
 				Name: (string) (len=8) "EnumData",
 				Type: (*schema.VarType)(<nil>),
@@ -978,6 +988,7 @@
 									Enum: (*schema.VarEnumType)({
 										Name: (string) (len=6) "Access",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=4) "enum",
 											Name: (string) (len=6) "Access",
 											Type: (*schema.VarType)({
@@ -1093,6 +1104,7 @@
 									Enum: (*schema.VarEnumType)({
 										Name: (string) (len=6) "Status",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=4) "enum",
 											Name: (string) (len=6) "Status",
 											Type: (*schema.VarType)({
@@ -1161,108 +1173,126 @@
 		Errors: ([]*schema.Error) (len=18 cap=32) {
 			(*schema.Error)({
 				Code: (int) 1,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=12) "Unauthorized",
 				Message: (string) (len=12) "unauthorized",
 				HTTPStatus: (int) 401
 			}),
 			(*schema.Error)({
 				Code: (int) 2,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=12) "ExpiredToken",
 				Message: (string) (len=13) "expired token",
 				HTTPStatus: (int) 401
 			}),
 			(*schema.Error)({
 				Code: (int) 3,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=12) "InvalidToken",
 				Message: (string) (len=13) "invalid token",
 				HTTPStatus: (int) 401
 			}),
 			(*schema.Error)({
 				Code: (int) 4,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=11) "Deactivated",
 				Message: (string) (len=19) "account deactivated",
 				HTTPStatus: (int) 403
 			}),
 			(*schema.Error)({
 				Code: (int) 5,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=14) "ConfirmAccount",
 				Message: (string) (len=18) "confirm your email",
 				HTTPStatus: (int) 403
 			}),
 			(*schema.Error)({
 				Code: (int) 6,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=12) "AccessDenied",
 				Message: (string) (len=13) "access denied",
 				HTTPStatus: (int) 403
 			}),
 			(*schema.Error)({
 				Code: (int) 7,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=15) "MissingArgument",
 				Message: (string) (len=16) "missing argument",
 				HTTPStatus: (int) 400
 			}),
 			(*schema.Error)({
 				Code: (int) 8,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=15) "UnexpectedValue",
 				Message: (string) (len=16) "unexpected value",
 				HTTPStatus: (int) 400
 			}),
 			(*schema.Error)({
 				Code: (int) 100,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=11) "RateLimited",
 				Message: (string) (len=17) "too many requests",
 				HTTPStatus: (int) 429
 			}),
 			(*schema.Error)({
 				Code: (int) 101,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=12) "DatabaseDown",
 				Message: (string) (len=14) "service outage",
 				HTTPStatus: (int) 503
 			}),
 			(*schema.Error)({
 				Code: (int) 102,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=11) "ElasticDown",
 				Message: (string) (len=18) "search is degraded",
 				HTTPStatus: (int) 503
 			}),
 			(*schema.Error)({
 				Code: (int) 103,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=14) "NotImplemented",
 				Message: (string) (len=15) "not implemented",
 				HTTPStatus: (int) 501
 			}),
 			(*schema.Error)({
 				Code: (int) 200,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=12) "UserNotFound",
 				Message: (string) (len=14) "user not found",
 				HTTPStatus: (int) 400
 			}),
 			(*schema.Error)({
 				Code: (int) 201,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=8) "UserBusy",
 				Message: (string) (len=9) "user busy",
 				HTTPStatus: (int) 400
 			}),
 			(*schema.Error)({
 				Code: (int) 202,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=15) "InvalidUsername",
 				Message: (string) (len=16) "invalid username",
 				HTTPStatus: (int) 400
 			}),
 			(*schema.Error)({
 				Code: (int) 300,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=10) "FileTooBig",
 				Message: (string) (len=25) "file is too big (max 1GB)",
 				HTTPStatus: (int) 400
 			}),
 			(*schema.Error)({
 				Code: (int) 301,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=12) "FileInfected",
 				Message: (string) (len=16) "file is infected",
 				HTTPStatus: (int) 400
 			}),
 			(*schema.Error)({
 				Code: (int) 302,
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=8) "FileType",
 				Message: (string) (len=21) "unsupported file type",
 				HTTPStatus: (int) 400
@@ -1270,6 +1300,7 @@
 		},
 		Services: ([]*schema.Service) (len=1 cap=1) {
 			(*schema.Service)({
+				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Name: (string) (len=7) "TestApi",
 				Methods: ([]*schema.Method) (len=11 cap=16) {
 					(*schema.Method)({
@@ -1319,6 +1350,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=6) "Simple",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=6) "Simple",
 											Type: (*schema.VarType)(<nil>),
@@ -1404,6 +1436,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=6) "Simple",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=6) "Simple",
 											Type: (*schema.VarType)(<nil>),
@@ -1493,6 +1526,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=6) "Simple",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=6) "Simple",
 											Type: (*schema.VarType)(<nil>),
@@ -1567,6 +1601,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=6) "Simple",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=6) "Simple",
 											Type: (*schema.VarType)(<nil>),
@@ -1641,6 +1676,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=6) "Simple",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=6) "Simple",
 											Type: (*schema.VarType)(<nil>),
@@ -1726,6 +1762,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=6) "Simple",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=6) "Simple",
 											Type: (*schema.VarType)(<nil>),
@@ -1800,6 +1837,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=6) "Simple",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=6) "Simple",
 											Type: (*schema.VarType)(<nil>),
@@ -1874,6 +1912,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=6) "Simple",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=6) "Simple",
 											Type: (*schema.VarType)(<nil>),
@@ -1963,6 +2002,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=7) "Complex",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=7) "Complex",
 											Type: (*schema.VarType)(<nil>),
@@ -2225,6 +2265,7 @@
 																Struct: (*schema.VarStructType)({
 																	Name: (string) (len=4) "User",
 																	Type: (*schema.Type)({
+																		Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 																		Kind: (string) (len=6) "struct",
 																		Name: (string) (len=4) "User",
 																		Type: (*schema.VarType)(<nil>),
@@ -2358,6 +2399,7 @@
 																Struct: (*schema.VarStructType)({
 																	Name: (string) (len=4) "User",
 																	Type: (*schema.Type)({
+																		Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 																		Kind: (string) (len=6) "struct",
 																		Name: (string) (len=4) "User",
 																		Type: (*schema.VarType)(<nil>),
@@ -2475,6 +2517,7 @@
 														Struct: (*schema.VarStructType)({
 															Name: (string) (len=4) "User",
 															Type: (*schema.Type)({
+																Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 																Kind: (string) (len=6) "struct",
 																Name: (string) (len=4) "User",
 																Type: (*schema.VarType)(<nil>),
@@ -2589,6 +2632,7 @@
 														Enum: (*schema.VarEnumType)({
 															Name: (string) (len=6) "Status",
 															Type: (*schema.Type)({
+																Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 																Kind: (string) (len=4) "enum",
 																Name: (string) (len=6) "Status",
 																Type: (*schema.VarType)({
@@ -2682,6 +2726,7 @@
 									Struct: (*schema.VarStructType)({
 										Name: (string) (len=7) "Complex",
 										Type: (*schema.Type)({
+											Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 											Kind: (string) (len=6) "struct",
 											Name: (string) (len=7) "Complex",
 											Type: (*schema.VarType)(<nil>),
@@ -2944,6 +2989,7 @@
 																Struct: (*schema.VarStructType)({
 																	Name: (string) (len=4) "User",
 																	Type: (*schema.Type)({
+																		Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 																		Kind: (string) (len=6) "struct",
 																		Name: (string) (len=4) "User",
 																		Type: (*schema.VarType)(<nil>),
@@ -3077,6 +3123,7 @@
 																Struct: (*schema.VarStructType)({
 																	Name: (string) (len=4) "User",
 																	Type: (*schema.Type)({
+																		Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 																		Kind: (string) (len=6) "struct",
 																		Name: (string) (len=4) "User",
 																		Type: (*schema.VarType)(<nil>),
@@ -3194,6 +3241,7 @@
 														Struct: (*schema.VarStructType)({
 															Name: (string) (len=4) "User",
 															Type: (*schema.Type)({
+																Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 																Kind: (string) (len=6) "struct",
 																Name: (string) (len=4) "User",
 																Type: (*schema.VarType)(<nil>),
@@ -3308,6 +3356,7 @@
 														Enum: (*schema.VarEnumType)({
 															Name: (string) (len=6) "Status",
 															Type: (*schema.Type)({
+																Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 																Kind: (string) (len=4) "enum",
 																Name: (string) (len=6) "Status",
 																Type: (*schema.VarType)({
@@ -3411,6 +3460,7 @@
 											Enum: (*schema.VarEnumType)({
 												Name: (string) (len=6) "Status",
 												Type: (*schema.Type)({
+													Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 													Kind: (string) (len=4) "enum",
 													Name: (string) (len=6) "Status",
 													Type: (*schema.VarType)({
@@ -3500,6 +3550,7 @@
 											Enum: (*schema.VarEnumType)({
 												Name: (string) (len=6) "Access",
 												Type: (*schema.Type)({
+													Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 													Kind: (string) (len=4) "enum",
 													Name: (string) (len=6) "Access",
 													Type: (*schema.VarType)({
@@ -3644,72 +3695,83 @@
 		},
 		Deprecated_Messages: ([]interface {}) <nil>
 	}),
-	SchemaHash: (string) (len=40) "caa2122d991d977ab3cc5aa0df13a8a4cc5e4176",
+	SchemaHash: (string) (len=40) "8d78260064875a5af9ab376d389a4efe0f4e4d19",
 	WebrpcGenCommand: (string) (len=84) "webrpc-gen -schema=./schema/test.ridl -target=debug -out=./schema/test.debug.gen.txt",
 	WebrpcTarget: (string) (len=5) "debug",
 	WebrpcErrors: ([]*schema.Error) (len=11 cap=11) {
 		(*schema.Error)({
 			Code: (int) 0,
+			Path: (string) "",
 			Name: (string) (len=14) "WebrpcEndpoint",
 			Message: (string) (len=14) "endpoint error",
 			HTTPStatus: (int) 400
 		}),
 		(*schema.Error)({
 			Code: (int) -1,
+			Path: (string) "",
 			Name: (string) (len=19) "WebrpcRequestFailed",
 			Message: (string) (len=14) "request failed",
 			HTTPStatus: (int) 400
 		}),
 		(*schema.Error)({
 			Code: (int) -2,
+			Path: (string) "",
 			Name: (string) (len=14) "WebrpcBadRoute",
 			Message: (string) (len=9) "bad route",
 			HTTPStatus: (int) 404
 		}),
 		(*schema.Error)({
 			Code: (int) -3,
+			Path: (string) "",
 			Name: (string) (len=15) "WebrpcBadMethod",
 			Message: (string) (len=10) "bad method",
 			HTTPStatus: (int) 405
 		}),
 		(*schema.Error)({
 			Code: (int) -4,
+			Path: (string) "",
 			Name: (string) (len=16) "WebrpcBadRequest",
 			Message: (string) (len=11) "bad request",
 			HTTPStatus: (int) 400
 		}),
 		(*schema.Error)({
 			Code: (int) -5,
+			Path: (string) "",
 			Name: (string) (len=17) "WebrpcBadResponse",
 			Message: (string) (len=12) "bad response",
 			HTTPStatus: (int) 500
 		}),
 		(*schema.Error)({
 			Code: (int) -6,
+			Path: (string) "",
 			Name: (string) (len=17) "WebrpcServerPanic",
 			Message: (string) (len=12) "server panic",
 			HTTPStatus: (int) 500
 		}),
 		(*schema.Error)({
 			Code: (int) -7,
+			Path: (string) "",
 			Name: (string) (len=19) "WebrpcInternalError",
 			Message: (string) (len=14) "internal error",
 			HTTPStatus: (int) 500
 		}),
 		(*schema.Error)({
 			Code: (int) -8,
+			Path: (string) "",
 			Name: (string) (len=24) "WebrpcClientDisconnected",
 			Message: (string) (len=19) "client disconnected",
 			HTTPStatus: (int) 400
 		}),
 		(*schema.Error)({
 			Code: (int) -9,
+			Path: (string) "",
 			Name: (string) (len=16) "WebrpcStreamLost",
 			Message: (string) (len=11) "stream lost",
 			HTTPStatus: (int) 400
 		}),
 		(*schema.Error)({
 			Code: (int) -10,
+			Path: (string) "",
 			Name: (string) (len=20) "WebrpcStreamFinished",
 			Message: (string) (len=15) "stream finished",
 			HTTPStatus: (int) 200

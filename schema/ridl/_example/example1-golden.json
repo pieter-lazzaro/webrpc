@@ -4,6 +4,7 @@
  "version": "v0.0.1",
  "types": [
   {
+   "path": "example1-definitions.ridl",
    "kind": "enum",
    "name": "Kind",
    "type": "uint32",
@@ -25,6 +26,7 @@
    ]
   },
   {
+   "path": "example1-definitions.ridl",
    "kind": "enum",
    "name": "Kind2",
    "type": "uint32",
@@ -46,10 +48,12 @@
    ]
   },
   {
+   "path": "example1-partials.ridl",
    "kind": "struct",
    "name": "Empty"
   },
   {
+   "path": "example1-partials.ridl",
    "kind": "struct",
    "name": "GetUserRequest",
    "fields": [
@@ -60,6 +64,7 @@
    ]
   },
   {
+   "path": "example1.ridl",
    "kind": "struct",
    "name": "Role",
    "fields": [
@@ -88,6 +93,7 @@
    ]
   },
   {
+   "path": "example1.ridl",
    "kind": "struct",
    "name": "User",
    "fields": [
@@ -147,6 +153,7 @@
    ]
   },
   {
+   "path": "example1.ridl",
    "kind": "struct",
    "name": "Notice",
    "fields": [
@@ -157,6 +164,7 @@
    ]
   },
   {
+   "path": "example1.ridl",
    "kind": "struct",
    "name": "FlattenRequest",
    "fields": [
@@ -182,6 +190,7 @@
    ]
   },
   {
+   "path": "example1.ridl",
    "kind": "struct",
    "name": "FlattenResponse",
    "fields": [
@@ -209,6 +218,7 @@
  "errors": [],
  "services": [
   {
+   "path": "example1-definitions.ridl",
    "name": "PingerService",
    "methods": [
     {
@@ -230,6 +240,7 @@
    "comments": []
   },
   {
+   "path": "example1.ridl",
    "name": "ExampleService",
    "methods": [
     {
@@ -389,6 +400,7 @@
    "comments": []
   },
   {
+   "path": "example1.ridl",
    "name": "Another",
    "methods": [
     {

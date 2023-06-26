@@ -7,6 +7,7 @@ import (
 
 type Error struct {
 	Code       int    `json:"code"`
+	Path       string `json:"path"`
 	Name       string `json:"name"`
 	Message    string `json:"message"`
 	HTTPStatus int    `json:"httpStatus"`

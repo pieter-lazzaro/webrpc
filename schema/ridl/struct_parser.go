@@ -126,6 +126,66 @@ func parserStateStructField(mn *StructNode) parserState {
 	}
 }
 
+func parserStateStructMetaDefinition(mn *StructNode) parserState {
+	return func(p *parser) parserState {
+		// + <tag.name> = value
+		_, err := p.match(tokenPlusSign, tokenWhitespace)
+		if err != nil {
+			return p.stateError(err)
+		}
+
+		// tag
+		left, err := p.expectMetadataKey()
+		if err != nil {
+			return p.stateError(err)
+		}
+
+		// =
+		_, err = p.match(tokenWhitespace, tokenEqual, tokenWhitespace)
+		if err != nil {
+			return p.stateError(err)
+		}
+
+		// - or value
+		right, err := p.expectMetadataValue()
+		if err != nil {
+			return p.stateError(err)
+		}
+
+		mn.meta = append(mn.meta, &DefinitionNode{
+			leftNode:  newTokenNode(left),
+			rightNode: newTokenNode(right),
+		})
+
+		return parserStateStructMeta(mn)
+	}
+}
+
+func parserStateStructMeta(mn *StructNode) parserState {
+	return func(p *parser) parserState {
+
+		tok := p.cursor()
+
+		switch tok.tt {
+
+		case tokenNewLine, tokenWhitespace:
+			p.next()
+
+		case tokenHash:
+			p.continueUntilEOL()
+
+		case tokenPlusSign:
+			return parserStateStructMetaDefinition(mn)
+
+		default:
+			return parserStateStructField(mn)
+
+		}
+
+		return parserStateStructMeta(mn)
+	}
+}
+
 func parserStateStruct(p *parser) parserState {
 	// struct <name>
 	matches, err := p.match(tokenWord, tokenWhitespace, tokenWord)
@@ -137,7 +197,7 @@ func parserStateStruct(p *parser) parserState {
 		return p.stateError(errUnexpectedToken)
 	}
 
-	return parserStateStructField(&StructNode{
+	return parserStateStructMeta(&StructNode{
 		name:    newTokenNode(matches[2]),
 		fields:  []*DefinitionNode{},
 		comment: parseComments(p.comments, matches[0].line),

@@ -18,7 +18,7 @@ var (
 
 type Parser struct {
 	parent  *Parser
-	imports map[string]struct{}
+	imports map[string]*Parser
 
 	reader io.Reader
 	path   string
@@ -27,13 +27,24 @@ type Parser struct {
 
 func NewParser(fsys fs.FS, path string) *Parser {
 	return &Parser{
-		fsys: fsys,
-		path: path,
-		imports: map[string]struct{}{
-			// this file imports itself
-			path: {},
-		},
+		fsys:    fsys,
+		path:    path,
+		imports: map[string]*Parser{},
 	}
+}
+
+func (p *Parser) getExistingParser(filename string) *Parser {
+	existing := p.imports[filename]
+
+	if existing != nil {
+		return existing
+	}
+
+	if p.parent != nil {
+		return p.parent.getExistingParser(filename)
+	}
+
+	return nil
 }
 
 func (p *Parser) Parse() (*schema.WebRPCSchema, error) {
@@ -52,16 +63,50 @@ func (p *Parser) Parse() (*schema.WebRPCSchema, error) {
 }
 
 func (p *Parser) importRIDLFile(filename string) (*schema.WebRPCSchema, error) {
-	for node := p; node != nil; node = node.parent {
-		if _, imported := node.imports[filename]; imported {
-			return nil, fmt.Errorf("circular import %q in file %q", path.Base(filename), p.path)
-		}
-		node.imports[filename] = struct{}{}
+
+	m := p.getExistingParser(filename)
+
+	if m == nil {
+		m = NewParser(p.fsys, filename)
+		m.parent = p
+		p.imports[filename] = m
+		return m.Parse()
 	}
 
-	m := NewParser(p.fsys, filename)
-	m.parent = p
+	p.imports[filename] = m
+
+	if cylceCheck(nil, m, p.path) {
+		return nil, fmt.Errorf("circular import %q in file %q", path.Base(filename), p.path)
+	}
+
+	p.imports[filename] = m
+
 	return m.Parse()
+}
+
+func cylceCheck(visited map[string]bool, p *Parser, filename string) bool {
+
+	if p == nil {
+		return false
+	}
+
+	if visited == nil {
+		visited = map[string]bool{}
+	}
+
+	if _, v := visited[filename]; v {
+		return true
+	}
+
+	for _, ip := range p.imports {
+		visited[ip.path] = true
+		if cylceCheck(visited, ip, filename) {
+			return true
+		}
+	}
+
+	return false
+
 }
 
 func (p *Parser) parse() (*schema.WebRPCSchema, error) {
@@ -129,12 +174,16 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 		}
 
 		for i := range imported.Types {
-			if isImportAllowed(imported.Types[i].Name, members) {
+			importedTypeName := string(imported.Types[i].Name)
+
+			if isImportAllowed(importedTypeName, members) && s.GetTypeByPath(imported.Types[i].Path, importedTypeName) == nil {
+
 				s.Types = append(s.Types, imported.Types[i])
 			}
 		}
+
 		for i := range imported.Services {
-			if isImportAllowed(imported.Services[i].Name, members) {
+			if isImportAllowed(string(imported.Services[i].Name), members) && s.GetServiceByPath(imported.Services[i].Path, imported.Services[i].Name) == nil {
 				s.Services = append(s.Services, imported.Services[i])
 			}
 		}
@@ -143,6 +192,7 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 	// pushing enums (1st pass)
 	for _, line := range q.root.Enums() {
 		s.Types = append(s.Types, &schema.Type{
+			Path:   p.path,
 			Kind:   schemaTypeKindEnum,
 			Name:   line.Name().String(),
 			Fields: []*schema.TypeField{},
@@ -152,6 +202,7 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 	// pushing types (1st pass)
 	for _, line := range q.root.Structs() {
 		s.Types = append(s.Types, &schema.Type{
+			Path:     p.path,
 			Kind:     schemaTypeKindStruct,
 			Name:     line.Name().String(),
 			Comments: parseComment(line.Comment()),
@@ -161,6 +212,7 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 	// pushing services (1st pass)
 	for _, service := range q.root.Services() {
 		srv := &schema.Service{
+			Path:     p.path,
 			Name:     service.Name().String(),
 			Comments: parseComment(service.Comment()),
 		}
@@ -178,6 +230,8 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 		}
 
 		var enumType schema.VarType
+		enumDef.Path = p.path
+
 		err := schema.ParseVarTypeExpr(s, line.TypeName().String(), &enumType)
 		if err != nil {
 			return nil, fmt.Errorf("enum %q: unknown type: %v", name, line.TypeName())
@@ -205,6 +259,7 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 	// error types
 	for _, line := range q.root.Errors() {
 		var errorType schema.Error
+		errorType.Path = p.path
 		code, _ := strconv.ParseInt(line.code.String(), 10, 32)
 		errorType.Code = int(code)
 		errorType.Name = line.name.String()
@@ -251,6 +306,13 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 				})
 			}
 			structDef.Fields = append(structDef.Fields, field)
+		}
+
+		for _, meta := range line.Meta() {
+			key, val := meta.Left().String(), meta.Right().String()
+			structDef.Meta = append(structDef.Meta, schema.TypeFieldMeta{
+				key: val,
+			})
 		}
 	}
 

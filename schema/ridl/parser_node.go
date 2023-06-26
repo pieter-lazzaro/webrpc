@@ -208,6 +208,10 @@ type ImportNode struct {
 	members []*TokenNode
 }
 
+func (in ImportNode) String() string {
+	return in.Path().String()
+}
+
 func (in ImportNode) Members() []*TokenNode {
 	return in.members
 }
@@ -256,6 +260,7 @@ type StructNode struct {
 	name    *TokenNode
 	fields  []*DefinitionNode
 	comment string
+	meta    []*DefinitionNode
 }
 
 func (mn StructNode) Name() *TokenNode {
@@ -271,6 +276,10 @@ func (mn *StructNode) Fields() []*DefinitionNode {
 }
 
 func (mn *StructNode) Comment() string { return mn.comment }
+
+func (mn *StructNode) Meta() []*DefinitionNode {
+	return mn.meta
+}
 
 type ErrorNode struct {
 	node

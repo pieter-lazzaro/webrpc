@@ -533,3 +533,52 @@ func TestRIDLImportsExampleDir(t *testing.T) {
 		t.Log("To update the golden file, run go test -update=./_example/example1-golden.json")
 	}
 }
+
+func TestImportCycleDetection(t *testing.T) {
+
+	// A -> B -> C -> A
+	c := Parser{
+		path:    "c",
+		imports: map[string]*Parser{},
+	}
+
+	b := Parser{
+		path: "b",
+		imports: map[string]*Parser{
+			"c": &c,
+		},
+	}
+
+	a := Parser{
+		path: "a",
+		imports: map[string]*Parser{
+			"b": &b,
+		},
+	}
+
+	b.parent = &a
+	c.parent = &b
+	c.imports["a"] = &a
+
+	// check if cycle from C to from A
+	cycle := cylceCheck(nil, &c, "a")
+
+	assert.True(t, cycle)
+
+	// A -> B -> C
+	//   \  C
+
+	a.imports = map[string]*Parser{
+		"b": &b,
+		"c": &c,
+	}
+
+	b.imports = map[string]*Parser{
+		"c": &c,
+	}
+
+	c.imports = map[string]*Parser{}
+
+	// Check if C -> A
+	assert.False(t, cylceCheck(nil, &c, "a"))
+}

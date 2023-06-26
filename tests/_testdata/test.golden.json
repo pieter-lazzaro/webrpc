@@ -4,6 +4,7 @@
  "version": "v0.10.0",
  "types": [
   {
+   "path": "test.ridl",
    "kind": "enum",
    "name": "Status",
    "type": "uint32",
@@ -19,6 +20,7 @@
    ]
   },
   {
+   "path": "test.ridl",
    "kind": "enum",
    "name": "Access",
    "type": "uint32",
@@ -46,6 +48,7 @@
    ]
   },
   {
+   "path": "test.ridl",
    "kind": "struct",
    "name": "Simple",
    "fields": [
@@ -60,6 +63,7 @@
    ]
   },
   {
+   "path": "test.ridl",
    "kind": "struct",
    "name": "User",
    "fields": [
@@ -102,6 +106,7 @@
    ]
   },
   {
+   "path": "test.ridl",
    "kind": "struct",
    "name": "Complex",
    "fields": [
@@ -148,6 +153,7 @@
    ]
   },
   {
+   "path": "test.ridl",
    "kind": "struct",
    "name": "EnumData",
    "fields": [
@@ -165,108 +171,126 @@
  "errors": [
   {
    "code": 1,
+   "path": "test.ridl",
    "name": "Unauthorized",
    "message": "unauthorized",
    "httpStatus": 401
   },
   {
    "code": 2,
+   "path": "test.ridl",
    "name": "ExpiredToken",
    "message": "expired token",
    "httpStatus": 401
   },
   {
    "code": 3,
+   "path": "test.ridl",
    "name": "InvalidToken",
    "message": "invalid token",
    "httpStatus": 401
   },
   {
    "code": 4,
+   "path": "test.ridl",
    "name": "Deactivated",
    "message": "account deactivated",
    "httpStatus": 403
   },
   {
    "code": 5,
+   "path": "test.ridl",
    "name": "ConfirmAccount",
    "message": "confirm your email",
    "httpStatus": 403
   },
   {
    "code": 6,
+   "path": "test.ridl",
    "name": "AccessDenied",
    "message": "access denied",
    "httpStatus": 403
   },
   {
    "code": 7,
+   "path": "test.ridl",
    "name": "MissingArgument",
    "message": "missing argument",
    "httpStatus": 400
   },
   {
    "code": 8,
+   "path": "test.ridl",
    "name": "UnexpectedValue",
    "message": "unexpected value",
    "httpStatus": 400
   },
   {
    "code": 100,
+   "path": "test.ridl",
    "name": "RateLimited",
    "message": "too many requests",
    "httpStatus": 429
   },
   {
    "code": 101,
+   "path": "test.ridl",
    "name": "DatabaseDown",
    "message": "service outage",
    "httpStatus": 503
   },
   {
    "code": 102,
+   "path": "test.ridl",
    "name": "ElasticDown",
    "message": "search is degraded",
    "httpStatus": 503
   },
   {
    "code": 103,
+   "path": "test.ridl",
    "name": "NotImplemented",
    "message": "not implemented",
    "httpStatus": 501
   },
   {
    "code": 200,
+   "path": "test.ridl",
    "name": "UserNotFound",
    "message": "user not found",
    "httpStatus": 400
   },
   {
    "code": 201,
+   "path": "test.ridl",
    "name": "UserBusy",
    "message": "user busy",
    "httpStatus": 400
   },
   {
    "code": 202,
+   "path": "test.ridl",
    "name": "InvalidUsername",
    "message": "invalid username",
    "httpStatus": 400
   },
   {
    "code": 300,
+   "path": "test.ridl",
    "name": "FileTooBig",
    "message": "file is too big (max 1GB)",
    "httpStatus": 400
   },
   {
    "code": 301,
+   "path": "test.ridl",
    "name": "FileInfected",
    "message": "file is infected",
    "httpStatus": 400
   },
   {
    "code": 302,
+   "path": "test.ridl",
    "name": "FileType",
    "message": "unsupported file type",
    "httpStatus": 400
@@ -274,6 +298,7 @@
  ],
  "services": [
   {
+   "path": "test.ridl",
    "name": "TestApi",
    "methods": [
     {

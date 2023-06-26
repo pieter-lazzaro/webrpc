@@ -91,6 +91,16 @@ func (s *WebRPCSchema) ToJSON() (string, error) {
 	return buf.String(), nil
 }
 
+func (s *WebRPCSchema) GetTypeByPath(path, name string) *Type {
+	t := s.GetTypeByName(name)
+
+	if t != nil && t.Path == path {
+		return t
+	}
+
+	return nil
+}
+
 func (s *WebRPCSchema) GetTypeByName(name string) *Type {
 	name = strings.ToLower(name)
 	for _, message := range s.Types {
@@ -98,6 +108,16 @@ func (s *WebRPCSchema) GetTypeByName(name string) *Type {
 			return message
 		}
 	}
+	return nil
+}
+
+func (s *WebRPCSchema) GetServiceByPath(path, name string) *Service {
+	t := s.GetServiceByName(name)
+
+	if t != nil && t.Path == path {
+		return t
+	}
+
 	return nil
 }
 

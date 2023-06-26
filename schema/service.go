@@ -6,11 +6,11 @@ import (
 )
 
 type Service struct {
-	Name     string    `json:"name"`
-	Methods  []*Method `json:"methods"`
-	Comments []string  `json:"comments"`
-
-	Schema *WebRPCSchema `json:"-"` // denormalize/back-reference
+	Path     string        `json:"path"`
+	Name     string        `json:"name"`
+	Methods  []*Method     `json:"methods"`
+	Comments []string      `json:"comments"`
+	Schema   *WebRPCSchema `json:"-"` // denormalize/back-reference
 }
 
 type Method struct {
