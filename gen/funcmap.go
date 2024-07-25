@@ -30,6 +30,7 @@ func templateFuncMap(opts map[string]interface{}) map[string]interface{} {
 		"mapKeyType":   mapKeyType,   // v0.7.0
 		"mapValueType": mapValueType, // v0.7.0
 		"listElemType": listElemType, // v0.7.0
+		"typeName":     toString,
 
 		// Dictionary (map[string]any).
 		"dict":   dict,   // v0.7.0
