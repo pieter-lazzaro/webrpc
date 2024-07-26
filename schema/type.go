@@ -120,7 +120,7 @@ func (t *Type) Parse(schema *WebRPCSchema) error {
 	if t.Kind == TypeKind_Enum {
 		// ensure enum fields have value key set
 		for _, field := range t.Fields {
-			if field.Value == "" {
+			if field.Value == "" && t.Type.Type != T_String {
 				return fmt.Errorf("schema error: enum '%s' with field '%s' is missing value", t.Name, field.Name)
 			}
 			if field.Type != nil {

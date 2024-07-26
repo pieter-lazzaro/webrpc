@@ -183,10 +183,10 @@ func (p *parser) cursor() *token {
 }
 
 func (p *parser) expectStringValue() (*token, error) {
-	tok := p.cursor()
+	startToken := p.cursor()
 	p.next()
 
-	if tok.tt != tokenQuote {
+	if startToken.tt != tokenQuote {
 		return nil, errors.New("strings must start with a quote")
 	}
 
@@ -215,6 +215,14 @@ loop:
 
 		case tokenQuote:
 			// end of string
+			if len(tokens) == 0 {
+				return &token{
+					tt:   tokenComposed,
+					val:  "",
+					line: startToken.line,
+					col:  startToken.col,
+				}, nil
+			}
 			break loop
 		}
 

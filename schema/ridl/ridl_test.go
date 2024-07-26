@@ -146,6 +146,15 @@ func TestRIDLEnum(t *testing.T) {
           - USER                 # aka, = 0
           - ADMIN         # aka, = 1
           - OTHER
+		
+		enum ExplicitString: string
+		  - Value = "value"
+		  - Empty = ""
+
+		enum ImplicitString: string
+		 - Value
+		 - Value2
+		
   `
 		s, err := parseString(input)
 		assert.NoError(t, err)
@@ -178,6 +187,26 @@ func TestRIDLEnum(t *testing.T) {
 		assert.Equal(t, "0", string(s.Types[1].Fields[0].Value))
 		assert.Equal(t, "1", string(s.Types[1].Fields[1].Value))
 		assert.Equal(t, "2", string(s.Types[1].Fields[2].Value))
+
+		assert.Equal(t, "ExplicitString", string(s.Types[2].Name))
+		assert.Equal(t, "enum", string(s.Types[2].Kind))
+		assert.Equal(t, "string", string(s.Types[2].Type.String()))
+
+		assert.Equal(t, (*schema.VarType)(nil), s.Types[2].Fields[0].Type)
+		assert.Equal(t, (*schema.VarType)(nil), s.Types[2].Fields[1].Type)
+
+		assert.Equal(t, "value", string(s.Types[2].Fields[0].Value))
+		assert.Equal(t, "", string(s.Types[2].Fields[1].Value))
+
+		assert.Equal(t, "ImplicitString", string(s.Types[3].Name))
+		assert.Equal(t, "enum", string(s.Types[3].Kind))
+		assert.Equal(t, "string", string(s.Types[3].Type.String()))
+
+		assert.Equal(t, (*schema.VarType)(nil), s.Types[3].Fields[0].Type)
+		assert.Equal(t, (*schema.VarType)(nil), s.Types[3].Fields[1].Type)
+
+		assert.Equal(t, "Value", string(s.Types[3].Fields[0].Value))
+		assert.Equal(t, "Value2", string(s.Types[3].Fields[1].Value))
 	}
 }
 

@@ -240,7 +240,12 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 
 		for i, def := range line.Values() {
 			key, val := def.Left().String(), def.Right().String()
-			if val == "" {
+
+			if enumDef.Type.Type == schema.T_String && def.rightNode == nil {
+				val = key
+			}
+
+			if val == "" && enumDef.Type.Type != schema.T_String {
 				val = strconv.Itoa(i)
 			}
 

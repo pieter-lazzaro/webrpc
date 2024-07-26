@@ -583,6 +583,7 @@ func TestParserEnum(t *testing.T) {
 
 				- value2 = WALKER # comment
 
+				- value3 = "" #empty value
 
 				# comment
 			## cmment
@@ -621,11 +622,39 @@ func TestParserEnum(t *testing.T) {
 			assert.Equal(t, "value2", enums[0].values[1].Left().String())
 			assert.Equal(t, "WALKER", enums[0].values[1].Right().String())
 
+			assert.Equal(t, "value3", enums[0].values[2].Left().String())
+			assert.Equal(t, "", enums[0].values[2].Right().String())
+
 			assert.Equal(t, "USER", enums[1].values[0].Left().String())
 			assert.Equal(t, "ADMIN", enums[1].values[1].Left().String())
 
 			assert.Equal(t, "USER", enums[3].values[0].Left().String())
 			assert.Equal(t, "ADMIN", enums[3].values[1].Left().String())
+		}
+	}
+
+	{
+		p, err := newStringParser(`
+			enum Foo: string
+				- Value
+				- value2
+				- value3
+		`)
+		assert.NoError(t, err)
+
+		err = p.run()
+		assert.NoError(t, err)
+
+		enums := p.root.Enums()
+		if assert.Equal(t, 1, len(enums)) {
+			assert.Equal(t, "Value", enums[0].values[0].Left().String())
+			assert.Equal(t, "", enums[0].values[0].Right().String())
+
+			assert.Equal(t, "value2", enums[0].values[1].Left().String())
+			assert.Equal(t, "", enums[0].values[1].Right().String())
+
+			assert.Equal(t, "value3", enums[0].values[2].Left().String())
+			assert.Equal(t, "", enums[0].values[2].Right().String())
 		}
 	}
 }
