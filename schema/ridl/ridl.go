@@ -5,6 +5,7 @@ import (
 	"io"
 	"io/fs"
 	"path"
+	"slices"
 	"strconv"
 	"strings"
 
@@ -189,14 +190,18 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 		}
 	}
 
+	var enums []*schema.Type
+
 	// pushing enums (1st pass)
 	for _, line := range q.root.Enums() {
-		s.Types = append(s.Types, &schema.Type{
+		enumDef := &schema.Type{
 			Path:   p.path,
 			Kind:   schemaTypeKindEnum,
 			Name:   line.Name().String(),
 			Fields: []*schema.TypeField{},
-		})
+		}
+
+		enums = append(enums, enumDef)
 	}
 
 	// pushing types (1st pass)
@@ -223,20 +228,37 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 	// enum fields
 	for _, line := range q.root.Enums() {
 		name := line.Name().String()
-		enumDef := s.GetTypeByName(name)
 
-		if enumDef == nil {
+		enumDefIdx := slices.IndexFunc(enums, func(v *schema.Type) bool {
+			return v.Name == name
+		})
+
+		if enumDefIdx == -1 {
 			return nil, fmt.Errorf("unexpected error, could not find definition for: %v", name)
 		}
 
+		enumDef := s.GetTypeByName(name)
+
+		if enumDef == nil {
+			enumDef = enums[enumDefIdx]
+			s.Types = append(s.Types, enumDef)
+		}
+
 		var enumType schema.VarType
-		enumDef.Path = p.path
 
 		err := schema.ParseVarTypeExpr(s, line.TypeName().String(), &enumType)
+
 		if err != nil {
 			return nil, fmt.Errorf("enum %q: unknown type: %v", name, line.TypeName())
 		}
-		enumDef.Type = &enumType
+
+		if enumDef.Type != nil && enumType.Type != enumDef.Type.Type {
+			return nil, fmt.Errorf("enum %q: multiple declarations with different types: %v", name, line.TypeName())
+		}
+
+		if enumDef.Type == nil {
+			enumDef.Type = &enumType
+		}
 
 		for i, def := range line.Values() {
 			key, val := def.Left().String(), def.Right().String()

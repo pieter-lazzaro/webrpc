@@ -155,6 +155,9 @@ func TestRIDLEnum(t *testing.T) {
 		 - Value
 		 - Value2
 		
+		enum ImplicitString: string
+		 - Value3
+		
   `
 		s, err := parseString(input)
 		assert.NoError(t, err)
@@ -207,6 +210,7 @@ func TestRIDLEnum(t *testing.T) {
 
 		assert.Equal(t, "Value", string(s.Types[3].Fields[0].Value))
 		assert.Equal(t, "Value2", string(s.Types[3].Fields[1].Value))
+		assert.Equal(t, "Value3", string(s.Types[3].Fields[2].Value))
 	}
 }
 
