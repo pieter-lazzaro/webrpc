@@ -11,6 +11,11 @@ import example1-partials.ridl
   - Empty
   - GetUserRequest
 
+enum Kind: uint32
+  - GUEST = 3
+
+enum Kind2: uint32
+  - GUEST
 
 struct Role
   - name: string

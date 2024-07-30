@@ -14,14 +14,21 @@
       "comment"
      ],
      "name": "USER",
-     "value": "1"
+     "value": "1",
+     "explicit": true
     },
     {
      "comments": [
       "comment.."
      ],
      "name": "ADMIN",
-     "value": "2"
+     "value": "2",
+     "explicit": true
+    },
+    {
+     "name": "GUEST",
+     "value": "3",
+     "explicit": true
     }
    ]
   },
@@ -44,6 +51,10 @@
      ],
      "name": "ADMIN",
      "value": "1"
+    },
+    {
+     "name": "GUEST",
+     "value": "2"
     }
    ]
   },

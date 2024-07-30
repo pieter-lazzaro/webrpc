@@ -3,7 +3,7 @@
 		WebrpcVersion: (string) (len=2) "v1",
 		SchemaName: (string) (len=4) "Test",
 		SchemaVersion: (string) (len=7) "v0.10.0",
-		Types: ([]*schema.Type) (len=6 cap=8) {
+		Types: ([]*schema.Type) (len=6 cap=6) {
 			(*schema.Type)({
 				Path: (string) (len=56) "home/plazzaro/repositories/webrpc/tests/schema/test.ridl",
 				Kind: (string) (len=4) "enum",
@@ -26,6 +26,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) (len=1) "0",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -37,6 +38,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) (len=1) "1",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					})
@@ -44,6 +46,7 @@
 				TypeExtra: (schema.TypeExtra) {
 					Optional: (bool) false,
 					Value: (string) "",
+					Explicit: (bool) false,
 					Meta: ([]schema.TypeFieldMeta) <nil>
 				},
 				Comments: ([]string) <nil>
@@ -70,6 +73,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) (len=1) "0",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -81,6 +85,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) (len=1) "1",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -92,6 +97,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) (len=1) "2",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -103,6 +109,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) (len=1) "3",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -114,6 +121,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) (len=1) "4",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					})
@@ -121,6 +129,7 @@
 				TypeExtra: (schema.TypeExtra) {
 					Optional: (bool) false,
 					Value: (string) "",
+					Explicit: (bool) false,
 					Meta: ([]schema.TypeFieldMeta) <nil>
 				},
 				Comments: ([]string) <nil>
@@ -147,6 +156,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -166,6 +176,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					})
@@ -173,6 +184,7 @@
 				TypeExtra: (schema.TypeExtra) {
 					Optional: (bool) false,
 					Value: (string) "",
+					Explicit: (bool) false,
 					Meta: ([]schema.TypeFieldMeta) <nil>
 				},
 				Comments: ([]string) {
@@ -200,6 +212,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 								(schema.TypeFieldMeta) (len=1) {
 									(string) (len=4) "json": (string) (len=2) "id"
@@ -229,6 +242,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 								(schema.TypeFieldMeta) (len=1) {
 									(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -255,6 +269,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 								(schema.TypeFieldMeta) (len=1) {
 									(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -266,6 +281,7 @@
 				TypeExtra: (schema.TypeExtra) {
 					Optional: (bool) false,
 					Value: (string) "",
+					Explicit: (bool) false,
 					Meta: ([]schema.TypeFieldMeta) <nil>
 				},
 				Comments: ([]string) {
@@ -312,6 +328,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -369,6 +386,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -398,6 +416,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -427,6 +446,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -466,6 +486,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -514,6 +535,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -556,6 +578,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 															(schema.TypeFieldMeta) (len=1) {
 																(string) (len=4) "json": (string) (len=2) "id"
@@ -585,6 +608,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 															(schema.TypeFieldMeta) (len=1) {
 																(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -611,6 +635,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 															(schema.TypeFieldMeta) (len=1) {
 																(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -622,6 +647,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -638,6 +664,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -690,6 +717,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 															(schema.TypeFieldMeta) (len=1) {
 																(string) (len=4) "json": (string) (len=2) "id"
@@ -719,6 +747,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 															(schema.TypeFieldMeta) (len=1) {
 																(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -745,6 +774,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 															(schema.TypeFieldMeta) (len=1) {
 																(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -756,6 +786,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -771,6 +802,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -808,6 +840,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 													(schema.TypeFieldMeta) (len=1) {
 														(string) (len=4) "json": (string) (len=2) "id"
@@ -837,6 +870,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 													(schema.TypeFieldMeta) (len=1) {
 														(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -863,6 +897,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 													(schema.TypeFieldMeta) (len=1) {
 														(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -874,6 +909,7 @@
 									TypeExtra: (schema.TypeExtra) {
 										Optional: (bool) false,
 										Value: (string) "",
+										Explicit: (bool) false,
 										Meta: ([]schema.TypeFieldMeta) <nil>
 									},
 									Comments: ([]string) {
@@ -885,6 +921,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -923,6 +960,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) (len=1) "0",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											}
 										}),
@@ -934,6 +972,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) (len=1) "1",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											}
 										})
@@ -941,6 +980,7 @@
 									TypeExtra: (schema.TypeExtra) {
 										Optional: (bool) false,
 										Value: (string) "",
+										Explicit: (bool) false,
 										Meta: ([]schema.TypeFieldMeta) <nil>
 									},
 									Comments: ([]string) <nil>
@@ -950,6 +990,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					})
@@ -957,6 +998,7 @@
 				TypeExtra: (schema.TypeExtra) {
 					Optional: (bool) false,
 					Value: (string) "",
+					Explicit: (bool) false,
 					Meta: ([]schema.TypeFieldMeta) <nil>
 				},
 				Comments: ([]string) {
@@ -1009,6 +1051,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) (len=1) "0",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1020,6 +1063,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) (len=1) "1",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1031,6 +1075,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) (len=1) "2",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1042,6 +1087,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) (len=1) "3",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1053,6 +1099,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) (len=1) "4",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1060,6 +1107,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) <nil>
@@ -1082,6 +1130,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					}),
@@ -1125,6 +1174,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) (len=1) "0",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1136,6 +1186,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) (len=1) "1",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1143,6 +1194,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) <nil>
@@ -1157,6 +1209,7 @@
 						TypeExtra: (schema.TypeExtra) {
 							Optional: (bool) false,
 							Value: (string) "",
+							Explicit: (bool) false,
 							Meta: ([]schema.TypeFieldMeta) <nil>
 						}
 					})
@@ -1164,6 +1217,7 @@
 				TypeExtra: (schema.TypeExtra) {
 					Optional: (bool) false,
 					Value: (string) "",
+					Explicit: (bool) false,
 					Meta: ([]schema.TypeFieldMeta) <nil>
 				},
 				Comments: ([]string) {
@@ -1371,6 +1425,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1390,6 +1445,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1397,6 +1453,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -1411,6 +1468,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							})
@@ -1457,6 +1515,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1476,6 +1535,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1483,6 +1543,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -1497,6 +1558,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							})
@@ -1547,6 +1609,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1566,6 +1629,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1573,6 +1637,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -1587,6 +1652,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							}),
@@ -1622,6 +1688,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1641,6 +1708,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1648,6 +1716,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -1662,6 +1731,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							}),
@@ -1697,6 +1767,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1716,6 +1787,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1723,6 +1795,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -1737,6 +1810,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							})
@@ -1783,6 +1857,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1802,6 +1877,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1809,6 +1885,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -1823,6 +1900,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							}),
@@ -1858,6 +1936,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1877,6 +1956,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1884,6 +1964,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -1898,6 +1979,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							}),
@@ -1933,6 +2015,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -1952,6 +2035,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -1959,6 +2043,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -1973,6 +2058,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							})
@@ -2042,6 +2128,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2099,6 +2186,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2128,6 +2216,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2157,6 +2246,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2196,6 +2286,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2244,6 +2335,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2286,6 +2378,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=4) "json": (string) (len=2) "id"
@@ -2315,6 +2408,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -2341,6 +2435,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -2352,6 +2447,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) <nil>
 																		},
 																		Comments: ([]string) {
@@ -2368,6 +2464,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2420,6 +2517,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=4) "json": (string) (len=2) "id"
@@ -2449,6 +2547,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -2475,6 +2574,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -2486,6 +2586,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) <nil>
 																		},
 																		Comments: ([]string) {
@@ -2501,6 +2602,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2538,6 +2640,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 																				(schema.TypeFieldMeta) (len=1) {
 																					(string) (len=4) "json": (string) (len=2) "id"
@@ -2567,6 +2670,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 																				(schema.TypeFieldMeta) (len=1) {
 																					(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -2593,6 +2697,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 																				(schema.TypeFieldMeta) (len=1) {
 																					(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -2604,6 +2709,7 @@
 																TypeExtra: (schema.TypeExtra) {
 																	Optional: (bool) false,
 																	Value: (string) "",
+																	Explicit: (bool) false,
 																	Meta: ([]schema.TypeFieldMeta) <nil>
 																},
 																Comments: ([]string) {
@@ -2615,6 +2721,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2653,6 +2760,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) (len=1) "0",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) <nil>
 																		}
 																	}),
@@ -2664,6 +2772,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) (len=1) "1",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) <nil>
 																		}
 																	})
@@ -2671,6 +2780,7 @@
 																TypeExtra: (schema.TypeExtra) {
 																	Optional: (bool) false,
 																	Value: (string) "",
+																	Explicit: (bool) false,
 																	Meta: ([]schema.TypeFieldMeta) <nil>
 																},
 																Comments: ([]string) <nil>
@@ -2680,6 +2790,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -2687,6 +2798,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -2701,6 +2813,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							})
@@ -2766,6 +2879,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2823,6 +2937,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2852,6 +2967,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2881,6 +2997,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2920,6 +3037,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -2968,6 +3086,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -3010,6 +3129,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=4) "json": (string) (len=2) "id"
@@ -3039,6 +3159,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -3065,6 +3186,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -3076,6 +3198,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) <nil>
 																		},
 																		Comments: ([]string) {
@@ -3092,6 +3215,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -3144,6 +3268,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=4) "json": (string) (len=2) "id"
@@ -3173,6 +3298,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -3199,6 +3325,7 @@
 																				TypeExtra: (schema.TypeExtra) {
 																					Optional: (bool) false,
 																					Value: (string) "",
+																					Explicit: (bool) false,
 																					Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 																						(schema.TypeFieldMeta) (len=1) {
 																							(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -3210,6 +3337,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) <nil>
 																		},
 																		Comments: ([]string) {
@@ -3225,6 +3353,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -3262,6 +3391,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) (len=3 cap=4) {
 																				(schema.TypeFieldMeta) (len=1) {
 																					(string) (len=4) "json": (string) (len=2) "id"
@@ -3291,6 +3421,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) (len=2 cap=2) {
 																				(schema.TypeFieldMeta) (len=1) {
 																					(string) (len=4) "json": (string) (len=8) "USERNAME"
@@ -3317,6 +3448,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) "",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) (len=1 cap=1) {
 																				(schema.TypeFieldMeta) (len=1) {
 																					(string) (len=9) "go.tag.db": (string) (len=1) "-"
@@ -3328,6 +3460,7 @@
 																TypeExtra: (schema.TypeExtra) {
 																	Optional: (bool) false,
 																	Value: (string) "",
+																	Explicit: (bool) false,
 																	Meta: ([]schema.TypeFieldMeta) <nil>
 																},
 																Comments: ([]string) {
@@ -3339,6 +3472,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												}),
@@ -3377,6 +3511,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) (len=1) "0",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) <nil>
 																		}
 																	}),
@@ -3388,6 +3523,7 @@
 																		TypeExtra: (schema.TypeExtra) {
 																			Optional: (bool) false,
 																			Value: (string) (len=1) "1",
+																			Explicit: (bool) false,
 																			Meta: ([]schema.TypeFieldMeta) <nil>
 																		}
 																	})
@@ -3395,6 +3531,7 @@
 																TypeExtra: (schema.TypeExtra) {
 																	Optional: (bool) false,
 																	Value: (string) "",
+																	Explicit: (bool) false,
 																	Meta: ([]schema.TypeFieldMeta) <nil>
 																},
 																Comments: ([]string) <nil>
@@ -3404,6 +3541,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													}
 												})
@@ -3411,6 +3549,7 @@
 											TypeExtra: (schema.TypeExtra) {
 												Optional: (bool) false,
 												Value: (string) "",
+												Explicit: (bool) false,
 												Meta: ([]schema.TypeFieldMeta) <nil>
 											},
 											Comments: ([]string) {
@@ -3425,6 +3564,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							})
@@ -3481,6 +3621,7 @@
 															TypeExtra: (schema.TypeExtra) {
 																Optional: (bool) false,
 																Value: (string) (len=1) "0",
+																Explicit: (bool) false,
 																Meta: ([]schema.TypeFieldMeta) <nil>
 															}
 														}),
@@ -3492,6 +3633,7 @@
 															TypeExtra: (schema.TypeExtra) {
 																Optional: (bool) false,
 																Value: (string) (len=1) "1",
+																Explicit: (bool) false,
 																Meta: ([]schema.TypeFieldMeta) <nil>
 															}
 														})
@@ -3499,6 +3641,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													},
 													Comments: ([]string) <nil>
@@ -3516,6 +3659,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							})
@@ -3571,6 +3715,7 @@
 															TypeExtra: (schema.TypeExtra) {
 																Optional: (bool) false,
 																Value: (string) (len=1) "0",
+																Explicit: (bool) false,
 																Meta: ([]schema.TypeFieldMeta) <nil>
 															}
 														}),
@@ -3582,6 +3727,7 @@
 															TypeExtra: (schema.TypeExtra) {
 																Optional: (bool) false,
 																Value: (string) (len=1) "1",
+																Explicit: (bool) false,
 																Meta: ([]schema.TypeFieldMeta) <nil>
 															}
 														}),
@@ -3593,6 +3739,7 @@
 															TypeExtra: (schema.TypeExtra) {
 																Optional: (bool) false,
 																Value: (string) (len=1) "2",
+																Explicit: (bool) false,
 																Meta: ([]schema.TypeFieldMeta) <nil>
 															}
 														}),
@@ -3604,6 +3751,7 @@
 															TypeExtra: (schema.TypeExtra) {
 																Optional: (bool) false,
 																Value: (string) (len=1) "3",
+																Explicit: (bool) false,
 																Meta: ([]schema.TypeFieldMeta) <nil>
 															}
 														}),
@@ -3615,6 +3763,7 @@
 															TypeExtra: (schema.TypeExtra) {
 																Optional: (bool) false,
 																Value: (string) (len=1) "4",
+																Explicit: (bool) false,
 																Meta: ([]schema.TypeFieldMeta) <nil>
 															}
 														})
@@ -3622,6 +3771,7 @@
 													TypeExtra: (schema.TypeExtra) {
 														Optional: (bool) false,
 														Value: (string) "",
+														Explicit: (bool) false,
 														Meta: ([]schema.TypeFieldMeta) <nil>
 													},
 													Comments: ([]string) <nil>
@@ -3647,6 +3797,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							})
@@ -3679,6 +3830,7 @@
 								TypeExtra: (schema.TypeExtra) {
 									Optional: (bool) false,
 									Value: (string) "",
+									Explicit: (bool) false,
 									Meta: ([]schema.TypeFieldMeta) <nil>
 								}
 							})

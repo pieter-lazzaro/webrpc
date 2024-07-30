@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"io/fs"
+	"os"
 	"path"
 	"slices"
 	"strconv"
@@ -71,7 +72,7 @@ func (p *Parser) importRIDLFile(filename string) (*schema.WebRPCSchema, error) {
 		m = NewParser(p.fsys, filename)
 		m.parent = p
 		p.imports[filename] = m
-		return m.Parse()
+		return m.parse()
 	}
 
 	p.imports[filename] = m
@@ -82,7 +83,7 @@ func (p *Parser) importRIDLFile(filename string) (*schema.WebRPCSchema, error) {
 
 	p.imports[filename] = m
 
-	return m.Parse()
+	return m.parse()
 }
 
 func cylceCheck(visited map[string]bool, p *Parser, filename string) bool {
@@ -174,12 +175,14 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 			members = append(members, member.String())
 		}
 
-		for i := range imported.Types {
-			importedTypeName := string(imported.Types[i].Name)
+		for _, t := range imported.Types {
 
-			if isImportAllowed(importedTypeName, members) && s.GetTypeByPath(imported.Types[i].Path, importedTypeName) == nil {
+			if !isImportAllowed(t.Name, members) {
+				continue
+			}
 
-				s.Types = append(s.Types, imported.Types[i])
+			if s.GetTypeByPath(t.Path, t.Name) == nil {
+				s.Types = append(s.Types, t)
 			}
 		}
 
@@ -190,8 +193,6 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 		}
 	}
 
-	var enums []*schema.Type
-
 	// pushing enums (1st pass)
 	for _, line := range q.root.Enums() {
 		enumDef := &schema.Type{
@@ -201,7 +202,7 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 			Fields: []*schema.TypeField{},
 		}
 
-		enums = append(enums, enumDef)
+		s.Types = append(s.Types, enumDef)
 	}
 
 	// pushing types (1st pass)
@@ -229,20 +230,7 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 	for _, line := range q.root.Enums() {
 		name := line.Name().String()
 
-		enumDefIdx := slices.IndexFunc(enums, func(v *schema.Type) bool {
-			return v.Name == name
-		})
-
-		if enumDefIdx == -1 {
-			return nil, fmt.Errorf("unexpected error, could not find definition for: %v", name)
-		}
-
-		enumDef := s.GetTypeByName(name)
-
-		if enumDef == nil {
-			enumDef = enums[enumDefIdx]
-			s.Types = append(s.Types, enumDef)
-		}
+		enumDef := s.GetTypeByPath(p.path, name)
 
 		var enumType schema.VarType
 
@@ -260,6 +248,8 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 			enumDef.Type = &enumType
 		}
 
+		existingFields := len(enumDef.Fields)
+
 		for i, def := range line.Values() {
 			key, val := def.Left().String(), def.Right().String()
 
@@ -268,19 +258,22 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 			}
 
 			if val == "" && enumDef.Type.Type != schema.T_String {
-				val = strconv.Itoa(i)
+				val = strconv.Itoa(i + existingFields)
 			}
 
 			elems := &schema.TypeField{
 				Name: key,
 				TypeExtra: schema.TypeExtra{
-					Value: val,
+					Value:    val,
+					Explicit: def.rightNode != nil,
 				},
 				Comments: parseComment(def.Comment()),
 			}
 
 			enumDef.Fields = append(enumDef.Fields, elems)
 		}
+
+		fmt.Fprintf(os.Stderr, "%s/%s has %d fields\n", enumDef.Path, name, len(enumDef.Fields))
 	}
 
 	// error types
@@ -373,6 +366,51 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 
 		serviceDef := s.GetServiceByName(service.Name().String())
 		serviceDef.Methods = methods
+	}
+
+	// flatten enums
+	if p.parent == nil {
+		finalTypes := []*schema.Type{}
+		enums := []*schema.Type{}
+
+		for _, t := range s.Types {
+			if t.Kind == schemaTypeKindEnum {
+				enumDefIdx := slices.IndexFunc(enums, func(v *schema.Type) bool {
+					return v.Name == t.Name
+				})
+
+				if enumDefIdx == -1 {
+					enums = append(enums, t)
+				} else {
+					enums[enumDefIdx].Fields = append(enums[enumDefIdx].Fields, t.Fields...)
+				}
+			} else {
+				finalTypes = append(finalTypes, t)
+			}
+		}
+
+		// generate implicit values
+
+		for _, enum := range enums {
+			// ensure enum fields have value key set
+			if !enum.Fields[0].Explicit {
+				for i, field := range enum.Fields {
+					if field.Explicit {
+						return nil, fmt.Errorf("schema error: enum '%s' with field '%s', enums cannot mix explicit and implicit values", enum.Name, field.Name)
+					}
+
+					if enum.Type.Type == schema.T_String {
+						field.Value = field.Name
+					} else {
+						field.Value = strconv.Itoa(i)
+					}
+
+				}
+			}
+
+		}
+
+		s.Types = append(enums, finalTypes...)
 	}
 
 	return s, nil

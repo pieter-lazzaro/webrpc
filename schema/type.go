@@ -32,6 +32,7 @@ type TypeField struct {
 type TypeExtra struct {
 	Optional bool   `json:"optional,omitempty"` // used by structs
 	Value    string `json:"value,omitempty"`    // used by enums
+	Explicit bool   `json:"explicit,omitempty"` // used by enums
 
 	// Meta store extra metadata on a field for plugins
 	Meta []TypeFieldMeta `json:"meta,omitempty"`
@@ -66,6 +67,7 @@ func (t *Type) Parse(schema *WebRPCSchema) error {
 	// NOTE: Allow structs with no fields.
 	fieldList := map[string]string{}
 	jsonFieldList := map[string]string{}
+
 	for _, field := range t.Fields {
 		if string(field.Name) == "" {
 			return fmt.Errorf("schema error: detected empty field name in type '%s", typName)
@@ -119,12 +121,18 @@ func (t *Type) Parse(schema *WebRPCSchema) error {
 	// For enums only, ensure all field types are the same
 	if t.Kind == TypeKind_Enum {
 		// ensure enum fields have value key set
+		isExplicit := t.Fields[0].TypeExtra.Explicit
+
 		for _, field := range t.Fields {
 			if field.Value == "" && t.Type.Type != T_String {
 				return fmt.Errorf("schema error: enum '%s' with field '%s' is missing value", t.Name, field.Name)
 			}
 			if field.Type != nil {
 				return fmt.Errorf("schema error: enum '%s' with field '%s', must omit 'type'", t.Name, field.Name)
+			}
+
+			if field.TypeExtra.Explicit != isExplicit {
+				return fmt.Errorf("schema error: enum '%s' with field '%s', enums cannot mix explicit and implicit values", t.Name, field.Name)
 			}
 		}
 

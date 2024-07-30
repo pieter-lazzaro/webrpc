@@ -92,10 +92,11 @@ func (s *WebRPCSchema) ToJSON() (string, error) {
 }
 
 func (s *WebRPCSchema) GetTypeByPath(path, name string) *Type {
-	t := s.GetTypeByName(name)
-
-	if t != nil && t.Path == path {
-		return t
+	name = strings.ToLower(name)
+	for _, message := range s.Types {
+		if strings.ToLower(message.Name) == name && message.Path == path {
+			return message
+		}
 	}
 
 	return nil
