@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io"
 	"io/fs"
-	"os"
 	"path"
 	"slices"
 	"strconv"
@@ -273,7 +272,6 @@ func (p *Parser) parse() (*schema.WebRPCSchema, error) {
 			enumDef.Fields = append(enumDef.Fields, elems)
 		}
 
-		fmt.Fprintf(os.Stderr, "%s/%s has %d fields\n", enumDef.Path, name, len(enumDef.Fields))
 	}
 
 	// error types
